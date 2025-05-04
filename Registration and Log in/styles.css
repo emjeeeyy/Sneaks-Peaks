@@ -1,0 +1,40 @@
+/* Alert Styles */
+.custom-alert {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.alert-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 300px;
+}
+
+.alert-content button {
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.alert-content button:hover {
+    background: #001B3B;
+}
+
+.form-control.error {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+} 

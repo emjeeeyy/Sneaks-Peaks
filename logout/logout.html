@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log out - Sneaks & Picks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #fff;
+            color: #001f5b;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .logout-header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 32px 48px;
+            position: relative;
+        }
+        .home-icon {
+            font-size: 2.8rem;
+            color: #00296b;
+            background: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .logout-logo {
+            margin: 0 auto;
+        }
+        .logout-logo img {
+            height: 48px;
+        }
+        .logout-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+        }
+        .logout-card {
+            background: #fff;
+            border-radius: 28px;
+            box-shadow: 0 0 0 2px #eaeaea;
+            max-width: 440px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 2.5rem 2.5rem 2rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .logout-card h2 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            color: #001f5b;
+            text-align: center;
+        }
+        .logout-card .thankyou {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #001f5b;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .logout-card .form-control {
+            background: #fff6f6;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+            padding: 0.7rem 1rem;
+            color: #001f5b;
+        }
+        .logout-card .form-control:focus {
+            border-color: #001f5b;
+            box-shadow: 0 0 0 2px #e0eaff;
+        }
+        .logout-card .divider {
+            width: 100%;
+            border-top: 1.5px solid #e0e0e0;
+            margin: 1.2rem 0 1.5rem 0;
+        }
+        .logout-card .logout-btn {
+            background: #00296b;
+            color: #fff;
+            font-weight: 700;
+            border-radius: 18px;
+            font-size: 1.25rem;
+            padding: 0.7rem 0;
+            width: 100%;
+            border: none;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: background 0.2s;
+        }
+        .logout-card .logout-btn:hover {
+            background: #003080;
+        }
+        .logout-footer {
+            width: 100%;
+            background: #00296b;
+            color: #fff;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: auto;
+        }
+        .logout-footer .footer-links {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 48px;
+            font-size: 0.97rem;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+        .logout-footer .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 16px;
+            font-weight: 400;
+        }
+        .logout-footer .footer-links a:hover {
+            text-decoration: underline;
+        }
+        .logout-footer .copyright {
+            font-size: 0.9rem;
+            color: #fff;
+            text-align: right;
+        }
+        @media (max-width: 991px) {
+            .logout-card {
+                padding: 1.5rem 1rem 1rem 1rem;
+            }
+            .logout-footer .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0 10px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="logout-header">
+        <a href="#" class="home-icon" id="homeButton">⌂</a>
+        <div class="logout-logo">
+            <img src="../Homepage/sneaks--picks-high-resolution-logo-transparent.png" alt="Sneaks & Picks Logo" />
+        </div>
+    </div>
+    <div class="logout-main">
+        <div class="logout-card">
+            <h2>Log out</h2>
+            <div class="thankyou">Thank you for<br>shopping with us!</div>
+            <input type="password" class="form-control" placeholder="Enter Password" />
+            <div class="divider"></div>
+            <button class="logout-btn">Log out</button>
+        </div>
+    </div>
+    <footer class="logout-footer">
+        <div class="footer-links">
+            <div>
+                <a href="#">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Condition</a>
+                <a href="#">Terms of service</a>
+            </div>
+            <div class="copyright">© 2025 All Right Reserved</div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="logout.js"></script>
+</body>
+</html> 

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form - Sneaks & Picks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #fff;
+            font-family: 'Roboto', sans-serif;
+        }
+        .stepper {
+            gap: 0.5rem;
+        }
+        .step {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #001f5b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #001f5b;
+            position: relative;
+        }
+        .step.completed {
+            background: #001f5b;
+            color: #fff;
+            border-color: #001f5b;
+        }
+        .step-label {
+            font-size: 0.9rem;
+            margin: 0 0.5rem;
+            color: #222;
+            font-weight: 500;
+        }
+        .step-line {
+            width: 40px;
+            height: 2px;
+            background: #222;
+            margin: 0 0.5rem;
+        }
+        .back-arrow {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #222;
+            background: none;
+            border: none;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .order-summary-card {
+            border: 1.5px solid #e0e0e0;
+            border-radius: 14px;
+            background: #fff;
+        }
+        .order-summary-card th, .order-summary-card td {
+            border: none;
+            background: transparent;
+            vertical-align: middle;
+        }
+        .order-summary-card th {
+            color: #888;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        .order-summary-card td {
+            font-size: 1rem;
+        }
+        .order-img {
+            width: 40px;
+            height: 28px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid #eee;
+        }
+        .order-total-row {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .pay-btn {
+            background: #001f5b;
+            border: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            padding: 0.75rem 0;
+            transition: background 0.2s;
+            margin-top: 1rem;
+            color: #fff !important;
+        }
+        .pay-btn:hover {
+            background: #003080;
+        }
+        .footer-bar {
+            height: 64px;
+            background: #00296b;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100vw;
+            z-index: 100;
+        }
+        @media (max-width: 991px) {
+            .order-summary-card {
+                margin-bottom: 80px;
+            }
+            .footer-bar {
+                position: fixed;
+                bottom: 0;
+            }
+        }
+    </style>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="container pt-4">
+        <!-- Cart Title with Back Arrow (minimal, like screenshot) -->
+        <div class="row mb-1">
+            <div class="col-lg-6 d-flex align-items-center" style="padding-left: 2px;">
+                <button class="back-arrow-btn" style="border:none;background:transparent;padding:0;margin-right:8px;outline:none;display:flex;align-items:center;cursor:pointer;">
+                    <span style="font-size: 1.2rem; color: #111; line-height: 1;">&#8592;</span>
+                </button>
+                <span style="font-size: 1.08rem; color: #111; font-weight: 400;">Cart</span>
+            </div>
+        </div>
+        <!-- Stepper -->
+        <div class="d-flex justify-content-center align-items-center mb-4">
+            <div class="stepper d-flex align-items-center">
+                <div class="step completed"><span>✓</span></div>
+                <div class="step-label">Cart</div>
+                <div class="step-line"></div>
+                <div class="step active"><span></span></div>
+                <div class="step-label">Payment</div>
+                <div class="step-line"></div>
+                <div class="step"><span></span></div>
+                <div class="step-label">Confirm</div>
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-start">
+            <!-- Registered Cards -->
+            <div class="col-lg-6 mb-4">
+                <div class="main-card p-4 mb-3">
+                    <div class="d-flex align-items-center mb-3">
+                        <span class="fw-bold" style="font-size:1.1rem;"><i class="bi bi-credit-card-2-front me-2"></i>Registered cards</span>
+                    </div>
+                    <table class="table align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th style="width:40px;"></th>
+                                <th>Bank</th>
+                                <th>Order Code</th>
+                                <th>Full Name</th>
+                                <th>Valid Until</th>
+                            </tr>
+                        </thead>
+                        <tbody id="card-table-body">
+                            <!-- Card rows will be dynamically inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="add-card-row">
+                    <i class="bi bi-plus-circle"></i>
+                    <span class="fw-bold">Add new card</span>
+                </div>
+            </div>
+            <!-- Order Form -->
+            <div class="col-lg-4 mb-4">
+                <div class="order-summary-card p-4 mb-3">
+                    <div class="fw-bold mb-3"><i class="bi bi-receipt me-2"></i>Order Form</div>
+                    <div id="orderList"></div>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center order-total-row">
+                        <span>Total:</span>
+                        <span id="orderTotal">₱0</span>
+                    </div>
+                    <button class="btn pay-btn w-100">Pay your order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bar"></div>
+    <div id="customAlert" class="custom-alert" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;justify-content:center;align-items:center;">
+        <div class="alert-content" style="background:white;padding:20px;border-radius:8px;text-align:center;min-width:300px;">
+            <p id="alertMessage"></p>
+            <button onclick="closeCustomAlert()">OK</button>
+        </div>
+    </div>
+    <!-- Add Card Form (hidden by default) -->
+    <form id="add-card-form" style="display:none; margin-top:16px; border:1.5px solid #e0e0e0; border-radius:12px; padding:1.2rem; background:#f9f9f9;">
+        <div class="row g-2 align-items-end">
+            <div class="col-md-3">
+                <label class="form-label mb-1">Bank</label>
+                <select class="form-control" id="bankInput" required>
+                    <option value="" disabled selected>Select Bank</option>
+                    <option value="BPI">BPI</option>
+                    <option value="BDO">BDO</option>
+                    <option value="Landbank">Landbank</option>
+                    <option value="RCBC">RCBC</option>
+                    <option value="Chinabank">Chinabank</option>
+                    <option value="Metrobank">Metrobank</option>
+                    <option value="PNB">PNB</option>
+                    <option value="Unionbank">Unionbank</option>
+                    <option value="Paymaya">Paymaya</option>
+                    <option value="GCash">GCash</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label mb-1">Order Code</label>
+                <input type="text" class="form-control" id="orderCodeInput" required maxlength="5" placeholder="e.g. 00001">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label mb-1">Full Name</label>
+                <input type="text" class="form-control" id="fullNameInput" required placeholder="Enter your full name">
+            </div>
+            <div class="col-md-2">
+                <label class="form-label mb-1">Valid Until</label>
+                <input type="text" class="form-control" id="validUntilInput" placeholder="MM/YY" required maxlength="5">
+            </div>
+            <div class="col-12 mt-2">
+                <button type="submit" class="btn btn-primary">Add Card</button>
+                <button type="button" class="btn btn-secondary ms-2" id="cancelAddCard">Cancel</button>
+            </div>
+        </div>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="order.js"></script>
+</body>
+</html> 

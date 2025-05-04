@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sneaks & Picks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Homepage/styles.css" />
+  </head>
+  <body>    
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <img src="Homepage/sneaks--picks-high-resolution-logo-transparent.png" alt="Sneaks & Picks Logo" />
+        </div>
+        <ul class="nav-links">
+          <li><a href="homepageloggedin.html" class="active">Home</a></li>
+          <li><a href="#">New</a></li>
+          <li><a href="ARAMBULO_ADD_TO_CART/addtocartacc.html">Man</a></li>
+          <li><a href="#">Woman</a></li>
+          <li><a href="#">About us</a></li>
+        </ul>
+        <div class="nav-actions">
+          <div class="search-bar">
+            <input type="text" placeholder="Search" />
+            <button>🔍</button>
+          </div>
+          <button class="cart" onclick="window.location.href='ARAMBULO_ADD_TO_CART/Shopping Cart.html'">
+            🛒 <span class="cart-badge">0</span>
+          </button>
+          <button id="accountButton" style="background: none; border: none; cursor: pointer; padding: 0 10px; display: flex; align-items: center;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="12" fill="#001f5b"/>
+              <circle cx="12" cy="10" r="4" fill="white"/>
+              <path d="M12 14c-4 0-6 2-6 4v1h12v-1c0-2-2-4-6-4z" fill="white"/>
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="social-sidebar">
+      <a href="#">Instagram</a>
+      <a href="#">Twitter</a>
+      <a href="#">Facebook</a>
+    </div>
+
+    <section class="hero">
+      <div class="hero-text">
+        <h3>FEATURING</h3>
+        <h1>NIKE Air <br /> Max 97</h1>
+        <hr class="blue-line">
+        <p>
+          Inspired by the sleek lines of Japanese bullet trains, this iconic shoe features a full-length visible Air unit for superior cushioning and support.
+        </p>
+      </div>
+      <div class="hero-image-container">
+        <div class="hero-image-bg">
+          <div class="circle"></div>
+          <img src="Homepage/nikeairmaxwhite.png" alt="Nike Air Max White" />
+          <button class="plus-button" onclick="window.location.href='ARAMBULO_ADD_TO_CART/addtocartacc.html'">+</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="colors">
+      <div class="background-text left">SNEAKS & PICKS</div>
+      <div class="background-text right">SNEAKS & PICKS</div>
+      <div class="color-option">
+        <img src="Homepage/nikeairmaxolives.png" alt="Nike Olive" />
+        <p>AVAILABLE COLORS</p>
+        <div class="color-dots">
+          <span class="dot brown"></span>
+          <span class="dot black"></span>
+          <span class="dot white"></span>
+          <span class="dot red"></span>
+        </div>
+      </div>
+    </section>
+
+    <button class="more-products" onclick="window.location.href='ARAMBULO_ADD_TO_CART/addtocartacc.html'">MORE PRODUCTS ↓</button>
+    <div id="customAlert" class="custom-alert">
+        <div class="alert-content">
+            <p id="alertMessage"></p>
+            <button id="customAlertOk">OK</button>
+        </div>
+    </div>
+    <div id="accountModal" class="custom-alert" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:center;">
+      <div class="alert-content" style="background:white; padding:20px; border-radius:8px; text-align:center; min-width:300px;">
+        <p id="accountInfo"></p>
+        <button id="closeAccountModal" style="background:#001f5b; color:white; border:none; padding:8px 20px; border-radius:4px; margin-top:10px; cursor:pointer;">OK</button>
+        <button id="logoutAccountModal" style="background:#dc3545; color:white; border:none; padding:8px 20px; border-radius:4px; margin-top:10px; cursor:pointer; margin-left:10px;">Log out</button>
+      </div>
+    </div>
+    <script src="Homepage/homepageloggedin.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cartCountEl = document.querySelector('.cart-badge');
+        let cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+        function updateCartCount() {
+            const total = cart.reduce((sum, item) => sum + item.qty, 0);
+            if (cartCountEl) cartCountEl.textContent = total;
+        }
+        updateCartCount();
+    });
+    </script>
+  </body>
+</html> 

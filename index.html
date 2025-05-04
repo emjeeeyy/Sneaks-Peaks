@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sneaks & Picks</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Homepage/styles.css" />
+  </head>
+  <body>    
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <img src="Homepage/sneaks--picks-high-resolution-logo-transparent.png" alt="Sneaks & Picks Logo" />
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="#">New</a></li>
+          <li><a href="ARAMBULO_ADD_TO_CART/Add to Cart page.html">Man</a></li>
+          <li><a href="#">Woman</a></li>
+          <li><a href="#">About us</a></li>
+        </ul>
+        <div class="nav-actions">
+          <div class="search-bar">
+            <input type="text" placeholder="Search" />
+            <button>🔍</button>
+          </div>
+          <button class="cart" onclick="window.location.href='ARAMBULO_ADD_TO_CART/Shopping Cart.html'">
+            🛒 <span class="cart-badge">0</span>
+          </button>
+          <button class="login" onclick="window.location.href='Registration and Log in/login.html'">Log in</button>
+          <button class="signup" onclick="window.location.href='Registration and Log in/register.html'">Sign up</button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="social-sidebar">
+      <a href="#">Instagram</a>
+      <a href="#">Twitter</a>
+      <a href="#">Facebook</a>
+    </div>
+
+    <section class="hero">
+      <div class="hero-text">
+        <h3>FEATURING</h3>
+        <h1>NIKE Air <br /> Max 97</h1>
+        <hr class="blue-line">
+        <p>
+          Inspired by the sleek lines of Japanese bullet trains, this iconic shoe features a full-length visible Air unit for superior cushioning and support.
+        </p>
+      </div>
+      <div class="hero-image-container">
+        <div class="hero-image-bg">
+          <div class="circle"></div>
+          <img src="Homepage/nikeairmaxwhite.png" alt="Nike Air Max White" />
+          <button class="plus-button" onclick="window.location.href='ARAMBULO_ADD_TO_CART/Add to Cart page.html'">+</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="colors">
+      <div class="background-text left">SNEAKS & PICKS</div>
+      <div class="background-text right">SNEAKS & PICKS</div>
+      <div class="color-option">
+        <img src="Homepage/nikeairmaxolives.png" alt="Nike Olive" />
+        <p>AVAILABLE COLORS</p>
+        <div class="color-dots">
+          <span class="dot brown"></span>
+          <span class="dot black"></span>
+          <span class="dot white"></span>
+          <span class="dot red"></span>
+        </div>
+      </div>
+    </section>
+
+    <button class="more-products" onclick="window.location.href='ARAMBULO_ADD_TO_CART/Add to Cart page.html'">MORE PRODUCTS ↓</button>
+    <script src="Homepage/homepage.js"></script>
+  </body>
+</html>
